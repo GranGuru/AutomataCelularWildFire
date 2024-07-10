@@ -132,7 +132,8 @@ Funciones:
 
 Resultados con las imágenes de validación:
 
- ![Imagen de Portada](image_git/resultados sobre training.png)
+![Imagen de Portada](image_git/resultados_sobre_training.png)
+
 
  ![Imagen de Portada](image_git/resultados sobre training.png)
 
