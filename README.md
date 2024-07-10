@@ -77,9 +77,11 @@ constants.py: Este archivo define constantes globales utilizadas en todo el sist
 - Disminución del combustible: A medida que el fuego arde en una celda, el combustible disponible se consume en cada unidad de tiempo, llegando a agotarse y transicionando la celda al estado quemado.
 
 Tipos de celda definidas para el autómata:
+
   ![Imagen de Portada](image_git/tipo_celdas.png)
 
 Reglas de movimiento para el autómata:  
+
   ![Imagen de Portada](image_git/reglas_movimiento_automata.png)
 
 ## Datos utilizados
