@@ -85,13 +85,14 @@ Tipos de celda definidas para el autómata:
 
 Reglas de movimiento para el autómata:  
 
-  ![Imagen de Portada](image_git/reglas_movimiento_automata.png)
+  ![reglas_automata](image_git/reglas_movimiento_automata.png)
 
 ## Datos utilizados
 
 Debido a la necesidad de tener datos de calidad específicos para el mapa de riesgo, y con la amplia variabilidad que presentan las imágenes aéreas de la Sierra de Madrid, se ha optado por la creación de un dataset propio partiendo de las imágenes de drones del proyecto PNOA del Instituto Geográfico Nacional de España. Para ello, se han seleccionado un total de siete imágenes aéreas en formato GeoTIFF, siendo el utilizado por todas las comunidades de ciencias geoespaciales y terrestres para compartir datos geográficos. Cada una de estas imágenes tiene 340 megapíxeles y una resolución de 96 dpi con una profundidad de color de 24 bits, lo que dificulta su procesamiento y edición sin el uso de herramientas de visualización y tratamiento de imágenes. Por ello, se ha utilizado la herramienta GIMP en su versión 2.10, la cual permite la edición de imágenes mediante renderizado por GPU.
 
- ![Imagen de Portada](image_git/imagen aerea madrid 340MP.png)
+ ![imagenMascara340](image_git/imagen%20aerea%20madrid%20340MP.png)
+
 
 Para la creación del dataset es necesario que cada imagen disponga de una máscara segmentada, por lo que es necesario la creación de los segmentos, donde cada color corresponde a un segmento semántico concreto, habiéndose seleccionado tras el estudio de las imágenes un total de 7 segmentos. Tras la creación de los segmentos se ha procedido a la creación manual de las máscaras de cada imagen de 340 megapíxeles, dando lugar a una capa de igual tamaño que la original, con la superficie del terreno clasificada.
 
@@ -99,7 +100,7 @@ Para la creación del dataset es necesario que cada imagen disponga de una másc
  
 Una vez editadas las 7 imágenes aéreas y sus correspondientes máscaras, se ha procedido a la creación de miniaturas para el dataset. Cada miniatura creada tiene un tamaño de 512x512, resultando en un total de 8600 miniaturas de imágenes y 8600 máscaras, con un peso del dataset completo de 3.86GB. Para ello se ha desarrollado en Python un creador de miniaturas que lee las imágenes GeoTIFF, recorre desde arriba a la izquierda hasta abajo a la derecha cada una de las imágenes de las máscaras y genera las correspondientes miniaturas. Es importante que cada miniatura de la imagen tenga exactamente la misma miniatura de su máscara en términos de coordenadas sobre la imagen, de lo contrario, la máscara no representaría la realidad y provocaría que la red entrenada no tuviera los resultados previstos. Por otro lado, es importante que tanto el nombre de la miniatura de la imagen como el nombre de la miniatura de la máscara estén referenciados, por lo que en paralelo se ha desarrollado un dataset en CSV que genera esta relación, el cual contiene 3 columnas, una referenciando la miniatura de la imagen, otra columna referenciando la miniatura de la máscara y una tercera con la referencia de la imagen original.
 
- ![Imagen de Portada](image_git/dataset.png)
+ ![dataset](image_git/dataset.png)
 
 ## Arquitectura U-Net
 
@@ -109,7 +110,7 @@ El codificador es una pila tradicional de capas convolucionales y de agrupación
 
 El decodificador consta de muestreo ascendente y concatenación seguido de operaciones de convolución. El propósito del muestreo ascendente es expandir las dimensiones de las características para restaurar el mapa de características condensado al tamaño original de la imagen de entrada. El propósito de la concatenación es combinar los mapas de características de la red del codificador con los mapas de características muestreados en la red del decodificador para recuperar la información detallada de la imagen que se pierde durante el proceso de muestreo. Las convoluciones regulares posteriores ayudan a aprender la localización precisa, es decir el dónde, de los objetos en la imagen. Cada bloque del decodificador consiste en una capa de convolución transpuesta (Conv2DTranspose) para aumentar las dimensiones de la imagen, seguido de la concatenación con la salida correspondiente del codificador y dos capas convolucionales para refinar las características. Para adaptar las imágenes al tamaño requerido por el modelo U-Net, se procesan las miniaturas de 512x512 píxeles para reducirlas a 128x128 píxeles. Este preprocesamiento asegura que todas las imágenes tengan el tamaño adecuado para ser utilizadas en el modelo.
 
- ![Imagen de Portada](image_git/unet.png)
+ ![unet](image_git/unet.png)
 
 En total se han utilizado 50 épocas para el entrenamiento, con el optimizador ‘adam’, que ajusta los pesos del modelo para minimizar la pérdida de Dice, y como métrica se ha utilizado la precisión y el Coeficiente Dice, siendo este una métrica para evaluar la similitud entre las predicciones del modelo y las etiquetas verdaderas. Es especialmente útil en tareas de segmentación porque considera tanto la precisión como el recall, proporcionando una medida equilibrada de rendimiento. La época 50, es la que mejores resultados ha arrojado, lo cual indica que de seguir entrenando el modelo probablemente se mejorarían los resultados. El Coeficiente Dice tiene un valor de 0.7697, la precisión de 0.7697 y la pérdida Loss de 0.2303. La pérdida es la más baja registrada, mientras que la precisión y el coeficiente de Dice son las más altas. Con este valor de Coeficiente Dice podemos afirmar que la segmentación es muy precisa y esto sugiere que el modelo ha aprendido de manera efectiva las características relevantes de las imágenes.
 
@@ -128,21 +129,18 @@ Funciones:
 - Reset.
 - Pausa.
   
- ![Imagen de Portada](software.png)
+ ![software](software.png)
 
  
 ## Resultados
 
 Resultados con las imágenes de validación:
 
-![Imagen de Portada](image_git/resultados_sobre_training.png)
-
-
- ![Imagen de Portada](image_git/resultados sobre training.png)
+![resultados_training](image_git/resultados%20sobre%20training.png)
 
 Resultados con imágenes desconocidas:
 
- ![Imagen de Portada](image_git/resultados imagenes desconocidas.png)
+ ![resultados_ficheros_desconocidos](image_git/resultados%20imagenes%20desconocidas.png)
 
 
 ## GIFs de la herramienta
