@@ -29,19 +29,17 @@
 
 ## Descripción del proyecto
 
-Este proyecto es un sistema integrado que utiliza técnicas de fotogrametría e inteligencia artificial para simular y gestionar incendios. La simulación de fuego se basa en un autómata celular, mientras que el mapa de riesgo se genera mediante una red profunda U-Net para segmentar imágenes. Cada imagen sirve como red de células para los autómatas celulares, utilizando una heurística que depende de la segmentación y el análisis pixel a pixel.
+Los incendios forestales son un tema real que afecta a todos, no solo a las personas, sino también a los animales, plantas, ecosistemas e incluso a la climatología global. Con el cambio climático, la contaminación, accidentes, incluso eventos naturales y provocados por el hombre; la probabilidad de que se inicie un incendio es constante.
 
-El dataset utilizado ha sido de creación propia, compuesto por 8600 imágenes y sus respectivas 8600 máscaras, de imágenes aéreas de la Sierra de Madrid. Para su creación se ha utilizado el software GIMP y Python, con cada imagen teniendo un tamaño de 512x512.
+Por ello, el objetivo principal de esta investigación es proporcionar una herramienta para la planificación y el entrenamiento ante emergencias de incendios forestales con la idea de crear un servicio que impacte de manera positiva en la sociedad y ayuda a combatir los incendios.
 
-### Data Augmentation
+El desarrollo del proyecto se ha basado en el estudio de las investigaciones más recientes sobre incendios, simulaciones y la aplicación de tecnología de inteligencia artificial en simulaciones. Por ello, la aplicación desarrollada emplea un modelo de segmentación U-Net para generar mapas de riesgo del terreno y utiliza autómatas celulares para simular la propagación del fuego bajo diversas condiciones.
 
-Para el entrenamiento de la red profunda U-Net, se han utilizado las siguientes técnicas de data augmentation:
+Para conseguir el objetivo de que el modelo U-Net sea fiable, se ha creado un conjunto de datos específico de áreas no urbanas con 7 clases y un total de 8600 imágenes, que permite segmentar semánticamente las imágenes aéreas que capture un dron y obtener un mapa de riesgo con preciso. El modelo alcanzó métricas de rendimiento significativas, incluyendo un coeficiente de Dice de 0.7697 y una precisión de 0.7697 en los datos de entrenamiento, con métricas de validación de 0.6952 para ambos.
 
-- **Rotación**: Se rotan las imágenes en ángulos aleatorios para simular diferentes orientaciones de las escenas.
-- **Traslación**: Se desplazan las imágenes horizontal y verticalmente para cambiar la posición de los objetos.
-- **Escalado**: Se modifican las dimensiones de las imágenes para simular diferentes distancias de la cámara.
-- **Volteo Horizontal y Vertical**: Se invierten las imágenes horizontal y verticalmente para aumentar la variabilidad.
-- **Cambio de Brillo y Contraste**: Se ajustan los niveles de brillo y contraste para simular diferentes condiciones de iluminación.
+La integración de técnicas avanzadas de aprendizaje profundo con simulación interactiva ofrece una plataforma adecuada para el entrenamiento y la planificación de emergencias. Este proyecto establece una sólida base para utilizar tecnologías avanzadas en la gestión de incendios forestales y presenta un potencial significativo para aplicaciones del mundo real en la preparación y respuesta ante emergencias.
+
+Es un proyecto de Fin de Estudios del Master en Inteligencia Artificial de la universidad UNIR. Mi nombre es Antonio Adam Bejar Gladkowski, mi correo electronico es antonio.adam.bejar@hotmail.com.
 
 ## Estado del proyecto
 
