@@ -69,7 +69,9 @@ constants.py: Este archivo define constantes globales utilizadas en todo el sist
 - main.py: Inicializa y coordina todos los componentes del sistema, incluyendo la carga del modelo U-Net, la segmentación y clasificación del terreno, y la configuración de la interfaz gráfica. Contiene el bucle principal del simulador que actualiza y muestra la simulación de incendios forestales en tiempo real.
 - segments_file.py: Genera las miniaturas y sus máscaras correspondientes a partir de las imágenes GeoTIFF. El usuario puede modificar el tamaño de las imágenes resultantes, por defecto es 512*512. Toda la división de las imágenes en miniaturas es registrada en un fichero CSV que permite referenciar cada imagen con su máscara y con la imagen original.
 
-  ![Imagen de Portada](image_git/arquitectura del sistema.png)
+  ![Arquitectura del Sistema]("image_git/arquitectura del sistema.png")
+
+
 
 ## Propagación del autómata
 - Propagación por viento: El fuego se propaga de una celda a otra adyacente si hay suficiente combustible y el escudo de la celda destino es menor que la intensidad del fuego de la celda origen. La dirección del viento influye directamente en la probabilidad de propagación hacia dicha dirección. El fuego se propaga más fácilmente en la dirección del viento y más difícilmente en contra del viento, llegando a agotar el fuego de la cola en algunos casos.
@@ -78,7 +80,7 @@ constants.py: Este archivo define constantes globales utilizadas en todo el sist
 
 Tipos de celda definidas para el autómata:
 
-  ![Imagen de Portada](image_git/tipo_celdas.png)
+  ![Tiop de celdas](image_git/tipo_celdas.png)
 
 Reglas de movimiento para el autómata:  
 
