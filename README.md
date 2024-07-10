@@ -147,4 +147,6 @@ Resultados con imágenes desconocidas:
 
 Aquí se pueden añadir GIFs que muestren el funcionamiento de la herramienta en acción.
 
+ ![simulacion](image_git/simulacion.gif)
+
 
