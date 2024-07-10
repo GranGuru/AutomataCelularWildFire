@@ -132,11 +132,11 @@ Funciones:
 
 Resultados con las imágenes de validación:
 
- ![Imagen de Portada](resultados sobre training.png)
+ ![Imagen de Portada](image_git/resultados sobre training.png)
 
 Resultados con imágenes desconocidas:
 
- ![Imagen de Portada](resultados imagenes desconocidas.png)
+ ![Imagen de Portada](image_git/resultados imagenes desconocidas.png)
 
 
 ## GIFs de la herramienta
