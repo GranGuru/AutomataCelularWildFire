@@ -76,9 +76,6 @@ constants.py: Este archivo define constantes globales utilizadas en todo el sist
 - Propagación por tipo de terreno: Las celdas con diferentes tipos de terreno tienen diferentes cantidades de combustible y niveles de resistencia al fuego. Por ejemplo, las celdas de riesgo bajo tienen un escudo alto y menos combustible, mientras que las celdas de riesgo alto tienen más combustible y un escudo bajo.
 - Disminución del combustible: A medida que el fuego arde en una celda, el combustible disponible se consume en cada unidad de tiempo, llegando a agotarse y transicionando la celda al estado quemado.
 
-Tipos de celda definidas para el autómata:
-  ![Imagen de Portada](image_git/tipo_celdas.png)
-
 Reglas de movimiento para el autómata:  
   ![Imagen de Portada](image_git/reglas_movimiento_automata.png)
 
