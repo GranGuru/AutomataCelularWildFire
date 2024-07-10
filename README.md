@@ -1,6 +1,6 @@
 # Sistema Integrado de Simulación y Gestión de Incendios mediante Fotogrametría e Inteligencia Artificial
 
-![Imagen de Portada](images/portada.png)
+![Imagen de Portada](image_git/portada.png)
 
 ## Insignias
 
