@@ -69,7 +69,8 @@ constants.py: Este archivo define constantes globales utilizadas en todo el sist
 - main.py: Inicializa y coordina todos los componentes del sistema, incluyendo la carga del modelo U-Net, la segmentación y clasificación del terreno, y la configuración de la interfaz gráfica. Contiene el bucle principal del simulador que actualiza y muestra la simulación de incendios forestales en tiempo real.
 - segments_file.py: Genera las miniaturas y sus máscaras correspondientes a partir de las imágenes GeoTIFF. El usuario puede modificar el tamaño de las imágenes resultantes, por defecto es 512*512. Toda la división de las imágenes en miniaturas es registrada en un fichero CSV que permite referenciar cada imagen con su máscara y con la imagen original.
 
-  ![Arquitectura del Sistema]("image_git/arquitectura del sistema.png")
+![Arquitectura del Sistema](image_git/arquitectura%20del%20sistema.png)
+
 
 
 
