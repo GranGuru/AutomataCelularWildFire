@@ -76,6 +76,9 @@ constants.py: Este archivo define constantes globales utilizadas en todo el sist
 - Propagación por tipo de terreno: Las celdas con diferentes tipos de terreno tienen diferentes cantidades de combustible y niveles de resistencia al fuego. Por ejemplo, las celdas de riesgo bajo tienen un escudo alto y menos combustible, mientras que las celdas de riesgo alto tienen más combustible y un escudo bajo.
 - Disminución del combustible: A medida que el fuego arde en una celda, el combustible disponible se consume en cada unidad de tiempo, llegando a agotarse y transicionando la celda al estado quemado.
 
+Tipos de celda definidas para el autómata:
+  ![Imagen de Portada](image_git/tipo_celdas.png)
+
 Reglas de movimiento para el autómata:  
   ![Imagen de Portada](image_git/reglas_movimiento_automata.png)
 
@@ -87,7 +90,7 @@ Debido a la necesidad de tener datos de calidad específicos para el mapa de rie
 
 Para la creación del dataset es necesario que cada imagen disponga de una máscara segmentada, por lo que es necesario la creación de los segmentos, donde cada color corresponde a un segmento semántico concreto, habiéndose seleccionado tras el estudio de las imágenes un total de 7 segmentos. Tras la creación de los segmentos se ha procedido a la creación manual de las máscaras de cada imagen de 340 megapíxeles, dando lugar a una capa de igual tamaño que la original, con la superficie del terreno clasificada.
 
- ![Imagen de Portada](image_git/segmento_clases.png)
+
  
 Una vez editadas las 7 imágenes aéreas y sus correspondientes máscaras, se ha procedido a la creación de miniaturas para el dataset. Cada miniatura creada tiene un tamaño de 512x512, resultando en un total de 8600 miniaturas de imágenes y 8600 máscaras, con un peso del dataset completo de 3.86GB. Para ello se ha desarrollado en Python un creador de miniaturas que lee las imágenes GeoTIFF, recorre desde arriba a la izquierda hasta abajo a la derecha cada una de las imágenes de las máscaras y genera las correspondientes miniaturas. Es importante que cada miniatura de la imagen tenga exactamente la misma miniatura de su máscara en términos de coordenadas sobre la imagen, de lo contrario, la máscara no representaría la realidad y provocaría que la red entrenada no tuviera los resultados previstos. Por otro lado, es importante que tanto el nombre de la miniatura de la imagen como el nombre de la miniatura de la máscara estén referenciados, por lo que en paralelo se ha desarrollado un dataset en CSV que genera esta relación, el cual contiene 3 columnas, una referenciando la miniatura de la imagen, otra columna referenciando la miniatura de la máscara y una tercera con la referencia de la imagen original.
 
